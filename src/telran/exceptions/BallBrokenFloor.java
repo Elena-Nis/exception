@@ -7,7 +7,7 @@ public class BallBrokenFloor {
 	private int nFloors;
 	public BallBrokenFloor(int nFloors) {
 		this.nFloors = nFloors;
-		brokenFloor = new Random().nextInt(1, nFloors + 1);
+		brokenFloor = new Random().nextInt(1, this.nFloors + 1);
 	}
 	public int getBrokenFloor() {
 		return brokenFloor;
@@ -18,19 +18,5 @@ public class BallBrokenFloor {
 			throw new Exception ();
 		}
 	}
-
-    public int findBrokenFloor() {
-	    int low=1;
-	    int height=nFloors;
-	    while(low<=height) {
-		   int middle=(low+height)/2;
-		   try {
-			   checkFloor(middle);
-			   low=middle+1;
-			   }catch(Exception e) {
-		        height=middle-1;
-		       }
-	    }
-	return low;
-	}
+   
 }

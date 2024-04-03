@@ -29,16 +29,23 @@ class BallBrokenFloorTest {
 	@Test
 	void testBallBrokenFloor() {
 		BallBrokenFloor bbf = new BallBrokenFloor(N_FLOORS);
-		assertEquals(bbf.getBrokenFloor(), getMinBrokenFloor(bbf));
+		int brokenFloor = bbf.getBrokenFloor();
+		int low=1;
+		int height=N_FLOORS;
+		    while(low<=height) {
+			   int middle=(low+height)/2;
+			   try {
+				   bbf.checkFloor(middle);
+				   low=middle+1;
+				   }catch(Exception e) {
+			        height=middle-1;
+			       }
+		    }
+		assertEquals(brokenFloor, low);
+		System.out.printf("Ball broke on floor %d", low);
 		
 	}
 	
-	private int getMinBrokenFloor(BallBrokenFloor bbf) {
-		int minBroken=bbf.findBrokenFloor();
-		String res = String.format("Ball is broken on floor %d ", minBroken);
-		System.out.printf(res);
-		return  minBroken;
-	}
 	
 }
 
